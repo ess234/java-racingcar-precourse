@@ -12,8 +12,8 @@ public class Car {
     }
 
     private void validation(String name) {
-        if (this.isOverLength(name)){
-            throw new IllegalArgumentException("[ERROR] name length over "+MAX_CAR_NAMR_LENGTH);
+        if (this.isOverLength(name)) {
+            throw new IllegalArgumentException("[ERROR] name length over " + MAX_CAR_NAMR_LENGTH);
         }
     }
 
