@@ -15,7 +15,7 @@ public class RacingCar {
     private void volidationIsNum(String tryCnt) {
         try {
             Integer.parseInt(tryCnt);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] TryCnt is not Number");
         }
     }
