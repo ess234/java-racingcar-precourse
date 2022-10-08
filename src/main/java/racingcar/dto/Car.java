@@ -1,14 +1,19 @@
 package racingcar.dto;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public class Car {
     public static final int MAX_CAR_NAMR_LENGTH = 5;
     private String name;
+    private CarPosition carPosition;
 
     public Car(String name) {
         this.validation(name);
         this.name = name;
+        this.carPosition = new CarPosition();
     }
 
     private void validation(String name) {
@@ -19,10 +24,6 @@ public class Car {
 
     private boolean isOverLength(String name) {
         return (name.length() > MAX_CAR_NAMR_LENGTH);
-    }
-
-    public String getName() {
-        return name;
     }
 
     @Override
