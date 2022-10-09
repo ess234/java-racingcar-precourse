@@ -1,12 +1,14 @@
 package racingcar.dto;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.Objects;
 
 @Getter
+@ToString
 public class Car {
-    public static final int MAX_CAR_NAMR_LENGTH = 5;
+    private static final int MAX_CAR_NAMR_LENGTH = 5;
     private String name;
     private CarPosition carPosition;
 
@@ -42,13 +44,25 @@ public class Car {
     public boolean play(int randomNum) {
         this.isValidationRandomNum(randomNum);
 
-        carPosition.setDistance(randomNum);
+        this.carPosition.setDistance(randomNum);
+
+        System.out.println(printCarDistance());
 
         return true;
     }
 
+    private String printCarDistance() {
+        String printStr = this.getName() + " : ";
+
+        for (int i = 0; i < this.getCarPosition().getDistance(); i++) {
+            printStr += "-";
+        }
+
+        return printStr;
+    }
+
     private void isValidationRandomNum(int randomNum) {
-        if ( ! (0 <=  randomNum && 9 >= randomNum) ) {
+        if (!(0 <= randomNum && 9 >= randomNum)) {
             throw new IllegalStateException("[ERROR] randomNum is not valid");
         }
     }
