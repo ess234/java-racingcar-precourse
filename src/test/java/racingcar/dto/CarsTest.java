@@ -20,4 +20,11 @@ public class CarsTest {
             new Cars(Arrays.asList("pobi", "woni", "woni"));
         });
     }
+
+    @Test
+    void 자동차들_위치_이동_TEST() {
+        Cars cars = new Cars(Arrays.asList("pobi", "woni", "jun"));
+
+        assertThat(cars.play()).isTrue();
+    }
 }
