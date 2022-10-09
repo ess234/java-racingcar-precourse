@@ -1,17 +1,25 @@
 package racingcar.dto;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CarsTest {
+    Cars cars;
+
+    @BeforeEach
+    void setUp() {
+        cars = new Cars(Arrays.asList("pobi", "woni", "jun"));
+    }
 
     @Test
     void 자동차들_생성_TEST() {
-        assertThat(new Cars(Arrays.asList("pobi", "woni", "jun"))).isNotNull();
+        assertThat(cars).isNotNull();
     }
 
     @Test
@@ -23,8 +31,41 @@ public class CarsTest {
 
     @Test
     void 자동차들_위치_이동_TEST() {
-        Cars cars = new Cars(Arrays.asList("pobi", "woni", "jun"));
-
         assertThat(cars.play()).isTrue();
     }
+
+    @Test
+    void 거리가_제일_먼_자동차_가져오기_TEST() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    cars.play();
+
+                    for (Car car : cars.getCars()) {
+                        System.out.println(car.getName() + " : " + car.getCarPosition().getDistance());
+                    }
+
+                    assertThat(cars.getCarsByMaxDistance()).isEqualTo(Arrays.asList(new Car("woni")));
+                },
+                3, 4, 3
+        );
+
+    }
+
+    @Test
+    void 거리가_제일_먼_자동차들_가져오기_TEST() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    cars.play();
+
+                    for (Car car : cars.getCars()) {
+                        System.out.println(car.getName() + " : " + car.getCarPosition().getDistance());
+                    }
+
+                    assertThat(cars.getCarsByMaxDistance()).isEqualTo(Arrays.asList(new Car("woni"), new Car("jun")));
+                },
+                3, 4, 4
+        );
+
+    }
+
 }
