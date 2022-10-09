@@ -1,9 +1,14 @@
 package racingcar.dto;
 
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
 public class CarPosition {
-    public static final int STANDARD_NUM = 4;
-    public static final int MOVE_GO = 1;
-    public static final int MOVE_STOP = 0;
+    private static final int STANDARD_NUM = 4;
+    private static final int MOVE_GO = 1;
+    private static final int MOVE_STOP = 0;
 
     int distance = 0;
 
@@ -11,11 +16,11 @@ public class CarPosition {
     }
 
     public void setDistance(int randomNum) {
-        this.distance = this.distance+this.judgeGoOrStop(randomNum);
+        this.distance = this.distance + this.judgeGoOrStop(randomNum);
     }
 
     private int judgeGoOrStop(int randomNum) {
-        if (isGo(randomNum)){
+        if (this.isGo(randomNum)) {
             return MOVE_GO;
         }
 
