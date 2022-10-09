@@ -39,7 +39,19 @@ public class Car {
         return Objects.hash(name);
     }
 
-    public void play(int randomNum) {
+    public boolean play(int randomNum) {
+        this.isValidationRandomNum(randomNum);
+
         carPosition.setDistance(randomNum);
+
+        return true;
     }
+
+    private void isValidationRandomNum(int randomNum) {
+        if ( ! (0 <=  randomNum && 9 >= randomNum) ) {
+            throw new IllegalStateException("[ERROR] randomNum is not valid");
+        }
+    }
+
+
 }

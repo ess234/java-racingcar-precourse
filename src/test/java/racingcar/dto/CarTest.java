@@ -44,4 +44,22 @@ public class CarTest {
 
         assertThat(car.getCarPosition().getDistance()).isEqualTo(0);
     }
+
+    @Test
+    void 자동자_randomNum_validation_TEST() {
+        assertThat(car.play(9)).isTrue();
+
+        assertThat(car.play(0)).isTrue();
+    }
+
+    @Test
+    void 자동자_randomNum_validation_예외_TEST() {
+        assertThrows(IllegalStateException.class, () -> {
+            car.play(10);
+        });
+
+        assertThrows(IllegalStateException.class, () -> {
+            car.play(-1);
+        });
+    }
 }
