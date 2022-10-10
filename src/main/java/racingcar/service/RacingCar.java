@@ -4,6 +4,7 @@ import lombok.Getter;
 import racingcar.dto.Car;
 import racingcar.dto.Cars;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,10 +13,10 @@ public class RacingCar {
     private static final String SEPARATOR_CARS_NAME = ",";
     Cars cars;
 
-    public RacingCar(String carsName) {
-        this.validationCarsName(carsName);
+    public RacingCar(String inputCarsName) {
+        this.validationCarsName(inputCarsName);
 
-        this.cars = new Cars(Arrays.asList(carsName.split(SEPARATOR_CARS_NAME)));
+        this.cars = new Cars(this.createCars(inputCarsName));
     }
 
     public boolean start(int tryCnt) {
@@ -40,6 +41,19 @@ public class RacingCar {
         if (!carsNameStr.contains(SEPARATOR_CARS_NAME)) {
             throw new IllegalArgumentException("cars name does not contain correct separator");
         }
+    }
+
+    private List<Car> createCars(String inputCarsName) {
+        List<Car> cars = new ArrayList<>();
+
+        String[] carsName = inputCarsName.split(SEPARATOR_CARS_NAME);
+
+        for (int i = 0; i < carsName.length; i++) {
+            Car car = new Car(carsName[i]);
+
+            cars.add(car);
+        }
+        return cars;
     }
 
     private String printWinnerCarsName() {

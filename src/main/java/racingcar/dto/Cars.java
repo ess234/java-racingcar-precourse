@@ -13,9 +13,7 @@ public class Cars {
     private static final int MAX_RANDOM_NUM = 9;
     List<Car> cars;
 
-    public Cars(List<String> inputCars) {
-        List<Car> cars = this.mapCars(inputCars);
-
+    public Cars(List<Car> cars) {
         this.validation(cars);
 
         this.cars = cars;
@@ -37,17 +35,6 @@ public class Cars {
         }
 
         return this.getCarsByDistance(maxDistance);
-    }
-
-    private List<Car> mapCars(List<String> inputCars) {
-        List<Car> cars = new ArrayList<>();
-
-        for (int i = 0; i < inputCars.size(); i++) {
-            Car car = new Car(inputCars.get(i));
-
-            cars.add(car);
-        }
-        return cars;
     }
 
     private void validation(List<Car> cars) {
