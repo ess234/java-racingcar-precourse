@@ -9,7 +9,7 @@ public class Application {
             GameController gameController = new GameController();
             gameController.play();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("[ERROR]"+e.getMessage());
         }
     }
 }

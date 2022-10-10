@@ -20,7 +20,7 @@ public class RacingCar {
 
     private void validationCarsName(String carsNameStr) {
         if (!carsNameStr.contains(SEPARATOR_CARS_NAME)) {
-            throw new IllegalArgumentException("[ERROR] cars name does not contain correct separator");
+            throw new IllegalArgumentException("cars name does not contain correct separator");
         }
     }
 

@@ -9,6 +9,7 @@ import java.util.Objects;
 @ToString
 public class Car {
     private static final int MAX_CAR_NAMR_LENGTH = 5;
+    private static final String PRINT_DISTANCE = "-";
     private String name;
     private CarPosition carPosition;
 
@@ -20,7 +21,7 @@ public class Car {
 
     private void validation(String name) {
         if (this.isOverLength(name)) {
-            throw new IllegalArgumentException("[ERROR] name length over " + MAX_CAR_NAMR_LENGTH);
+            throw new IllegalArgumentException("name length over " + MAX_CAR_NAMR_LENGTH);
         }
     }
 
@@ -55,7 +56,7 @@ public class Car {
         String printStr = this.getName() + " : ";
 
         for (int i = 0; i < this.getCarPosition().getDistance(); i++) {
-            printStr += "-";
+            printStr += PRINT_DISTANCE;
         }
 
         return printStr;
@@ -63,7 +64,7 @@ public class Car {
 
     private void isValidationRandomNum(int randomNum) {
         if (!(0 <= randomNum && 9 >= randomNum)) {
-            throw new IllegalStateException("[ERROR] randomNum is not valid");
+            throw new IllegalStateException("randomNum is not valid");
         }
     }
 

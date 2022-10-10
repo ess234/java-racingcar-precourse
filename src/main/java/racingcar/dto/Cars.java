@@ -40,7 +40,7 @@ public class Cars {
         Set<Car> carSet = new HashSet<>(cars);
 
         if (carSet.size() != cars.size()) {
-            throw new IllegalStateException("[ERROR] Car duplicate occurrence");
+            throw new IllegalStateException("Car duplicate occurrence");
         }
     }
 

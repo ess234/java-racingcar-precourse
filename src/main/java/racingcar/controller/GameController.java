@@ -21,7 +21,7 @@ public class GameController {
         try {
             tryCnt = Integer.parseInt(readLine());
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] TryCnt is not Number");
+            throw new IllegalArgumentException("tryCnt is not Number");
         }
 
         return tryCnt;
