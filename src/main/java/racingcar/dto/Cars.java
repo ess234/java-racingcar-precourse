@@ -21,6 +21,24 @@ public class Cars {
         this.cars = cars;
     }
 
+    public boolean play() {
+        for (Car car : this.cars) {
+            car.play(Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM));
+        }
+
+        return true;
+    }
+
+    public List<Car> getCarsByMaxDistance() {
+        int maxDistance = 0;
+
+        for (Car car : this.cars) {
+            maxDistance = this.getMoreBigDistance(maxDistance, car);
+        }
+
+        return this.getCarsByDistance(maxDistance);
+    }
+
     private List<Car> mapCars(List<String> inputCars) {
         List<Car> cars = new ArrayList<>();
 
@@ -44,14 +62,6 @@ public class Cars {
         }
     }
 
-    public boolean play() {
-        for (Car car : this.cars) {
-            car.play(Randoms.pickNumberInRange(MIN_RANDOM_NUM, MAX_RANDOM_NUM));
-        }
-
-        return true;
-    }
-
     private List<Car> getCarsByDistance(int distance) {
         List<Car> resultCars = new ArrayList<>();
 
@@ -68,16 +78,6 @@ public class Cars {
         }
 
         return resultCars;
-    }
-
-    public List<Car> getCarsByMaxDistance() {
-        int maxDistance = 0;
-
-        for (Car car : this.cars) {
-            maxDistance = this.getMoreBigDistance(maxDistance, car);
-        }
-
-        return this.getCarsByDistance(maxDistance);
     }
 
     private int getMoreBigDistance(int maxDistance, Car car) {

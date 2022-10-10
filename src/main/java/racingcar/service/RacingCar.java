@@ -18,12 +18,6 @@ public class RacingCar {
         this.cars = new Cars(Arrays.asList(carsName.split(SEPARATOR_CARS_NAME)));
     }
 
-    private void validationCarsName(String carsNameStr) {
-        if (!carsNameStr.contains(SEPARATOR_CARS_NAME)) {
-            throw new IllegalArgumentException("cars name does not contain correct separator");
-        }
-    }
-
     public boolean start(int tryCnt) {
         System.out.println("실행 결과");
 
@@ -40,6 +34,12 @@ public class RacingCar {
         System.out.println("최종 우승자 : " + printWinnerCarsName());
 
         return true;
+    }
+
+    private void validationCarsName(String carsNameStr) {
+        if (!carsNameStr.contains(SEPARATOR_CARS_NAME)) {
+            throw new IllegalArgumentException("cars name does not contain correct separator");
+        }
     }
 
     private String printWinnerCarsName() {

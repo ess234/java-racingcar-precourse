@@ -30,8 +30,4 @@ public class CarPosition {
     private boolean isGo(int randomNum) {
         return STANDARD_NUM <= randomNum;
     }
-
-    public int getDistance() {
-        return this.distance;
-    }
 }
