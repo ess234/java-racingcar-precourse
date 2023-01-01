@@ -1,17 +1,21 @@
 package racingcar.controller;
 
-import racingcar.service.RacingCar;
+import racingcar.domain.Car;
+import racingcar.service.RacingGameService;
+
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class GameController {
-    RacingCar racingCar;
+    RacingGameService racingCarService;
 
     public void play() {
-        racingCar = new RacingCar(inputCarsName());
+        String carsName = inputCarsName();
+        int tryCnt = inputTryCnt();
 
-        racingCar.start(inputTryCnt());
-        racingCar.end();
+        racingCarService = new RacingGameService(carsName, tryCnt);
+        racingCarService.play();
     }
 
     private int inputTryCnt() {
